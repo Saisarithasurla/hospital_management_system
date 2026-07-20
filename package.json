@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
+    "react-chartjs-2": "^5.3.1",
+    "react-datepicker": "^9.1.0",
+    "react-paginate": "^8.3.0",
+    "react-toastify": "^11.1.0",
+    "xlsx": "^0.18.5"
+  }
+}
