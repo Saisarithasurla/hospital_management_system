@@ -12,7 +12,7 @@ import * as XLSX from 'xlsx';
 import { Search, Bed as BedIcon, Calendar, CheckCircle, XCircle, AlertCircle, FileSpreadsheet, FileText, ArrowLeftRight, DoorOpen, ListFilter } from 'lucide-react';
 import "../theme-utils.css";
 
-import { API_BASE_URL } from "../config";
+import { API_BASE_URL } from "../Config";
 
 const getAuthHeaders = (includeJson = false) => {
   const token = localStorage.getItem("accessToken");
