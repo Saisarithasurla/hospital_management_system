@@ -52,7 +52,7 @@ function DashboardAnalytics() {
     setError(null);
     try {
       const token = localStorage.getItem("accessToken");
-      let url = `http://127.0.0.1:8000/api/dashboard/analytics/?filter_type=${filterType}`;
+      let url = `https://hospital-management-system-6jw8.onrender.com/api/dashboard/analytics/?filter_type=${filterType}`;
       if (filterType === "custom" && startDate && endDate) {
         url += `&start_date=${startDate}&end_date=${endDate}`;
       }

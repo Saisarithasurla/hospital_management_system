@@ -58,7 +58,7 @@ function Payments() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      let url = `http://127.0.0.1:8000/api/payments/?ordering=${sortBy}`;
+      let url = `https://hospital-management-system-6jw8.onrender.com/api/payments/?ordering=${sortBy}`;
       if (searchQuery) url += `&search=${searchQuery}`;
       if (dateFilter) url += `&filter_type=${dateFilter}`;
       if (statusFilter) url += `&status=${statusFilter}`;
@@ -83,7 +83,7 @@ function Payments() {
   const fetchStats = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch("http://127.0.0.1:8000/api/payments/stats/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/payments/stats/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -100,7 +100,7 @@ function Payments() {
   const fetchBills = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch("http://127.0.0.1:8000/api/bills/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/bills/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -117,7 +117,7 @@ function Payments() {
   const fetchPatients = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch("http://127.0.0.1:8000/api/patients/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/patients/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -164,7 +164,7 @@ function Payments() {
       const patientObj = patients.find((p) => p.id === selectedBill.patient);
       const patientName = patientObj ? patientObj.name : `Patient ${selectedBill.patient}`;
 
-      const response = await fetch("http://127.0.0.1:8000/api/payments/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/payments/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -227,7 +227,7 @@ function Payments() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch(`http://127.0.0.1:8000/api/payments/${selectedPayment.id}/`, {
+      const response = await fetch(`https://hospital-management-system-6jw8.onrender.com/api/payments/${selectedPayment.id}/`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

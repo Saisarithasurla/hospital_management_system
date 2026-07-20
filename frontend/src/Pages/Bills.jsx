@@ -59,7 +59,7 @@ function Bills() {
       const token = localStorage.getItem("accessToken");
       const patientName = selectedBillForPayment.patient_name || patients.find(p => p.id == selectedBillForPayment.patient)?.name || `Patient ${selectedBillForPayment.patient}`;
       
-      const response = await fetch("http://127.0.0.1:8000/api/payments/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/payments/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -104,7 +104,7 @@ function Bills() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch("http://127.0.0.1:8000/api/doctors/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/doctors/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -125,7 +125,7 @@ function Bills() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch("http://127.0.0.1:8000/api/bills/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/bills/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -146,7 +146,7 @@ function Bills() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch("http://127.0.0.1:8000/api/patients/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/patients/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -167,7 +167,7 @@ function Bills() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch("http://127.0.0.1:8000/api/appointments/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/appointments/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -193,7 +193,7 @@ function Bills() {
     try {
       const token = localStorage.getItem("accessToken");
       setLoading(true);
-      const response = await fetch("http://127.0.0.1:8000/api/bills/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/bills/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -249,7 +249,7 @@ function Bills() {
       const token = localStorage.getItem("accessToken");
       setLoading(true);
       const response = await fetch(
-        `http://127.0.0.1:8000/api/bills/${editingId}/`,
+        `https://hospital-management-system-6jw8.onrender.com/api/bills/${editingId}/`,
         {
           method: "PUT",
           headers: {
@@ -309,7 +309,7 @@ function Bills() {
       const token = localStorage.getItem("accessToken");
       setLoading(true);
       const response = await fetch(
-        `http://127.0.0.1:8000/api/bills/${id}/`,
+        `https://hospital-management-system-6jw8.onrender.com/api/bills/${id}/`,
         {
           method: "DELETE",
           headers: {

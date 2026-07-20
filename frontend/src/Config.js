@@ -1,0 +1,1 @@
+export const API_BASE_URL = "https://hospital-management-system-6jw8.onrender.com/api";

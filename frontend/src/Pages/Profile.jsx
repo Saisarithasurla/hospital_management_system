@@ -22,7 +22,7 @@ function Profile() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch("http://127.0.0.1:8000/api/profile/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/profile/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -47,7 +47,7 @@ function Profile() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const res = await fetch("http://127.0.0.1:8000/api/profile/", {
+      const res = await fetch("https://hospital-management-system-6jw8.onrender.com/api/profile/", {
         method: "PATCH",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ username, email, role }),

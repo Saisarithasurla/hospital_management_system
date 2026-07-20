@@ -53,21 +53,21 @@ function AppointmentCalendar() {
 
     try {
       // Fetch appointments
-      const apptRes = await fetch("http://127.0.0.1:8000/api/appointments/", { headers });
+      const apptRes = await fetch("https://hospital-management-system-6jw8.onrender.com/api/appointments/", { headers });
       if (apptRes.ok) {
         const data = await apptRes.json();
         setAppointments(data);
       }
 
       // Fetch doctors
-      const docRes = await fetch("http://127.0.0.1:8000/api/doctors/", { headers });
+      const docRes = await fetch("https://hospital-management-system-6jw8.onrender.com/api/doctors/", { headers });
       if (docRes.ok) {
         const data = await docRes.json();
         setDoctors(data);
       }
 
       // Fetch patients
-      const patRes = await fetch("http://127.0.0.1:8000/api/patients/", { headers });
+      const patRes = await fetch("https://hospital-management-system-6jw8.onrender.com/api/patients/", { headers });
       if (patRes.ok) {
         const data = await patRes.json();
         setPatients(data);
@@ -83,7 +83,7 @@ function AppointmentCalendar() {
   const fetchAppointments = async () => {
     const token = localStorage.getItem("accessToken");
     try {
-      const apptRes = await fetch("http://127.0.0.1:8000/api/appointments/", {
+      const apptRes = await fetch("https://hospital-management-system-6jw8.onrender.com/api/appointments/", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (apptRes.ok) {
@@ -138,7 +138,7 @@ function AppointmentCalendar() {
       const token = localStorage.getItem("accessToken");
       const appt = appointments.find(a => String(a.id) === String(apptId));
       
-      const res = await fetch(`http://127.0.0.1:8000/api/appointments/${apptId}/`, {
+      const res = await fetch(`https://hospital-management-system-6jw8.onrender.com/api/appointments/${apptId}/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -181,8 +181,8 @@ function AppointmentCalendar() {
     try {
       const token = localStorage.getItem("accessToken");
       const url = formIsEditing 
-        ? `http://127.0.0.1:8000/api/appointments/${formAppointmentId}/`
-        : "http://127.0.0.1:8000/api/appointments/";
+        ? `https://hospital-management-system-6jw8.onrender.com/api/appointments/${formAppointmentId}/`
+        : "https://hospital-management-system-6jw8.onrender.com/api/appointments/";
       const method = formIsEditing ? "PUT" : "POST";
 
       const res = await fetch(url, {
@@ -229,7 +229,7 @@ function AppointmentCalendar() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const res = await fetch(`http://127.0.0.1:8000/api/appointments/${apptId}/`, {
+      const res = await fetch(`https://hospital-management-system-6jw8.onrender.com/api/appointments/${apptId}/`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

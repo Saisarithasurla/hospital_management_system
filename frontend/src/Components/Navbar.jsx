@@ -49,7 +49,7 @@ function Navbar() {
     try {
       const token = localStorage.getItem("accessToken");
       if (!token) return;
-      const response = await fetch("http://127.0.0.1:8000/api/notifications/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/notifications/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -83,7 +83,7 @@ function Navbar() {
   const markAsRead = async (id) => {
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch(`http://127.0.0.1:8000/api/notifications/${id}/mark-read/`, {
+      const response = await fetch(`https://hospital-management-system-6jw8.onrender.com/api/notifications/${id}/mark-read/`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -103,7 +103,7 @@ function Navbar() {
   const markAllAsRead = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch("http://127.0.0.1:8000/api/notifications/mark-all-read/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/notifications/mark-all-read/", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -123,7 +123,7 @@ function Navbar() {
   const deleteNotification = async (id) => {
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch(`http://127.0.0.1:8000/api/notifications/${id}/`, {
+      const response = await fetch(`https://hospital-management-system-6jw8.onrender.com/api/notifications/${id}/`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -143,7 +143,7 @@ function Navbar() {
   const clearAllNotifications = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch("http://127.0.0.1:8000/api/notifications/clear-all/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/notifications/clear-all/", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -207,7 +207,7 @@ function Navbar() {
                 ) : (
                   notifications.map((n) => (
                     <div key={n.id} className={`p-4 transition-colors flex gap-3 hover:bg-theme-hover relative group ${!n.is_read ? "bg-blue-500/5 border-l-4 border-blue-500 pl-3" : ""}`}>
-                      <div className="flex-shrink-0 mt-0.5">
+                      <div className="shrink-0 mt-0.5">
                         {getIcon(n.notification_type)}
                       </div>
                       <div className="flex-1 pr-6">

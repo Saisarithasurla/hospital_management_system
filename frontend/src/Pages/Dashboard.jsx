@@ -23,7 +23,7 @@ function Dashboard() {
       };
 
       if (role === "Admin") {
-        const doctorResponse = await fetch("http://127.0.0.1:8000/api/doctors/", { headers });
+        const doctorResponse = await fetch("https://hospital-management-system-6jw8.onrender.com/api/doctors/", { headers });
         const doctors = await doctorResponse.json();
         if (doctorResponse.ok) {
           setDoctorCount(doctors.length);
@@ -31,20 +31,20 @@ function Dashboard() {
       }
 
       // Both doctor and receptionist can fetch patients and appointments
-      const patientResponse = await fetch("http://127.0.0.1:8000/api/patients/", { headers });
+      const patientResponse = await fetch("https://hospital-management-system-6jw8.onrender.com/api/patients/", { headers });
       const patients = await patientResponse.json();
       if (patientResponse.ok) {
         setPatientCount(patients.length);
       }
 
-      const appointmentResponse = await fetch("http://127.0.0.1:8000/api/appointments/", { headers });
+      const appointmentResponse = await fetch("https://hospital-management-system-6jw8.onrender.com/api/appointments/", { headers });
       const appointments = await appointmentResponse.json();
       if (appointmentResponse.ok) {
         setAppointmentCount(appointments.length);
       }
 
       if (role === "Admin" || role === "Receptionist") {
-        const billResponse = await fetch("http://127.0.0.1:8000/api/bills/", { headers });
+        const billResponse = await fetch("https://hospital-management-system-6jw8.onrender.com/api/bills/", { headers });
         const bills = await billResponse.json();
         if (billResponse.ok && Array.isArray(bills)) {
           const revenue = bills.reduce((sum, bill) => sum + Number(bill.amount), 0);

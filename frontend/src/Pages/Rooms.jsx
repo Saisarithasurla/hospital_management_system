@@ -12,7 +12,7 @@ import * as XLSX from 'xlsx';
 import { Search, Bed as BedIcon, Calendar, CheckCircle, XCircle, AlertCircle, FileSpreadsheet, FileText, ArrowLeftRight, DoorOpen, ListFilter } from 'lucide-react';
 import "../theme-utils.css";
 
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+import { API_BASE_URL } from "../config";
 
 const getAuthHeaders = (includeJson = false) => {
   const token = localStorage.getItem("accessToken");
@@ -599,7 +599,7 @@ function Rooms() {
             {/* ROOMS TAB */}
             {activeTab === "rooms" && (
               <div className="bg-theme-card rounded-3xl border border-theme shadow-theme-xl overflow-x-auto">
-                <table className="w-full min-w-[800px]">
+                <table className="w-full min-width-[800px]">
                   <thead className="bg-theme-tertiary">
                     <tr>
                       <th className="p-4 text-left text-theme-primary">Room Number</th>
@@ -653,7 +653,7 @@ function Rooms() {
             {/* BEDS TAB */}
             {activeTab === "beds" && (
               <div className="bg-theme-card rounded-3xl border border-theme shadow-theme-xl overflow-x-auto">
-                <table className="w-full min-w-[800px]">
+                <table className="w-full min-width-[800px]">
                   <thead className="bg-theme-tertiary">
                     <tr>
                       <th className="p-4 text-left text-theme-primary">Bed Number</th>
@@ -703,7 +703,7 @@ function Rooms() {
             {/* ALLOCATIONS TAB */}
             {activeTab === "allocations" && (
               <div className="bg-theme-card rounded-3xl border border-theme shadow-theme-xl overflow-x-auto">
-                <table className="w-full min-w-[800px]">
+                <table className="w-full min-width-[800px]">
                   <thead className="bg-theme-tertiary">
                     <tr>
                       <th className="p-4 text-left text-theme-primary">Patient Name</th>
@@ -764,7 +764,7 @@ function Rooms() {
             {/* TRANSFERS TAB */}
             {activeTab === "transfers" && (
               <div className="bg-theme-card rounded-3xl border border-theme shadow-theme-xl overflow-x-auto">
-                <table className="w-full min-w-[800px]">
+                <table className="w-full min-width-[800px]">
                   <thead className="bg-theme-tertiary">
                     <tr>
                       <th className="p-4 text-left text-theme-primary">Patient Name</th>

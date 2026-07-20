@@ -33,7 +33,7 @@ function Patients() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch("http://127.0.0.1:8000/api/patients/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/patients/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -66,7 +66,7 @@ function Patients() {
     try {
       const token = localStorage.getItem("accessToken");
       setLoading(true);
-      const response = await fetch("http://127.0.0.1:8000/api/patients/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/patients/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -128,7 +128,7 @@ function Patients() {
       const token = localStorage.getItem("accessToken");
       setLoading(true);
       const response = await fetch(
-        `http://127.0.0.1:8000/api/patients/${editingId}/`,
+        `https://hospital-management-system-6jw8.onrender.com/api/patients/${editingId}/`,
         {
           method: "PUT",
           headers: {
@@ -184,7 +184,7 @@ function Patients() {
       const token = localStorage.getItem("accessToken");
       setLoading(true);
       const response = await fetch(
-        `http://127.0.0.1:8000/api/patients/${id}/`,
+        `https://hospital-management-system-6jw8.onrender.com/api/patients/${id}/`,
         {
           method: "DELETE",
           headers: {

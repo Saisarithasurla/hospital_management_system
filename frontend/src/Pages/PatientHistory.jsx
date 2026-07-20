@@ -80,7 +80,7 @@ function PatientHistory() {
   const fetchPatientDetails = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch(`http://127.0.0.1:8000/api/patients/${id}/`, {
+      const response = await fetch(`https://hospital-management-system-6jw8.onrender.com/api/patients/${id}/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.ok) {
@@ -98,7 +98,7 @@ function PatientHistory() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      let url = `http://127.0.0.1:8000/api/medical-histories/?patient=${id}`;
+      let url = `https://hospital-management-system-6jw8.onrender.com/api/medical-histories/?patient=${id}`;
       
       if (search) {
         url += `&search=${encodeURIComponent(search)}`;
@@ -225,8 +225,8 @@ function PatientHistory() {
     setLoading(true);
     try {
       const url = isEditing 
-        ? `http://127.0.0.1:8000/api/medical-histories/${editingRecordId}/`
-        : "http://127.0.0.1:8000/api/medical-histories/";
+        ? `https://hospital-management-system-6jw8.onrender.com/api/medical-histories/${editingRecordId}/`
+        : "https://hospital-management-system-6jw8.onrender.com/api/medical-histories/";
       
       const method = isEditing ? "PUT" : "POST";
       
@@ -272,7 +272,7 @@ function PatientHistory() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch(`http://127.0.0.1:8000/api/medical-histories/${deleteRecordId}/`, {
+      const response = await fetch(`https://hospital-management-system-6jw8.onrender.com/api/medical-histories/${deleteRecordId}/`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });

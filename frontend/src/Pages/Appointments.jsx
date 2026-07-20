@@ -37,7 +37,7 @@ function Appointments() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const res = await fetch("http://127.0.0.1:8000/api/doctors/", {
+      const res = await fetch("https://hospital-management-system-6jw8.onrender.com/api/doctors/", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {
@@ -57,7 +57,7 @@ function Appointments() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const res = await fetch("http://127.0.0.1:8000/api/patients/", {
+      const res = await fetch("https://hospital-management-system-6jw8.onrender.com/api/patients/", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {
@@ -77,7 +77,7 @@ function Appointments() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const res = await fetch("http://127.0.0.1:8000/api/appointments/", {
+      const res = await fetch("https://hospital-management-system-6jw8.onrender.com/api/appointments/", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {
@@ -107,7 +107,7 @@ function Appointments() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const res = await fetch("http://127.0.0.1:8000/api/appointments/", {
+      const res = await fetch("https://hospital-management-system-6jw8.onrender.com/api/appointments/", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ doctor, patient, appointment_date: appointmentDate, appointment_time: appointmentTime, status }),
@@ -131,7 +131,7 @@ function Appointments() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const res = await fetch(`http://127.0.0.1:8000/api/appointments/${editingId}/`, {
+      const res = await fetch(`https://hospital-management-system-6jw8.onrender.com/api/appointments/${editingId}/`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ doctor, patient, appointment_date: appointmentDate, appointment_time: appointmentTime, status }),
@@ -169,7 +169,7 @@ function Appointments() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      const res = await fetch(`http://127.0.0.1:8000/api/appointments/${id}/`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
+      const res = await fetch(`https://hospital-management-system-6jw8.onrender.com/api/appointments/${id}/`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
       if (res.ok) {
         toast.success('Appointment Deleted Successfully');
         window.dispatchEvent(new Event('crud-operation'));

@@ -79,10 +79,10 @@ function Reports() {
       const token = localStorage.getItem("accessToken");
       const h = { Authorization: `Bearer ${token}` };
       
-      const sumRes = await fetch("http://127.0.0.1:8000/api/reports/summary/", { headers: h });
+      const sumRes = await fetch("https://hospital-management-system-6jw8.onrender.com/api/reports/summary/", { headers: h });
       if (sumRes.ok) setSummary(await sumRes.json());
 
-      const chartRes = await fetch("http://127.0.0.1:8000/api/reports/charts/", { headers: h });
+      const chartRes = await fetch("https://hospital-management-system-6jw8.onrender.com/api/reports/charts/", { headers: h });
       if (chartRes.ok) setCharts(await chartRes.json());
     } catch (e) {
       console.error(e);
@@ -95,7 +95,7 @@ function Reports() {
   const fetchFilterData = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const res = await fetch("http://127.0.0.1:8000/api/doctors/", {
+      const res = await fetch("https://hospital-management-system-6jw8.onrender.com/api/doctors/", {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) setDoctorsList(await res.json());
@@ -143,7 +143,7 @@ function Reports() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      let url = `http://127.0.0.1:8000/api/reports/generate/?report_type=${selectedReport}`;
+      let url = `https://hospital-management-system-6jw8.onrender.com/api/reports/generate/?report_type=${selectedReport}`;
       
       if (startDate) url += `&start_date=${startDate}`;
       if (endDate) url += `&end_date=${endDate}`;

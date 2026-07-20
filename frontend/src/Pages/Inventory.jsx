@@ -42,7 +42,7 @@ function Inventory() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      let url = "http://127.0.0.1:8000/api/medicines/";
+      let url = "https://hospital-management-system-6jw8.onrender.com/api/medicines/";
       const queryParams = [];
       if (search) {
         queryParams.push(`search=${encodeURIComponent(search)}`);
@@ -86,7 +86,7 @@ function Inventory() {
     try {
       const token = localStorage.getItem("accessToken");
       setLoading(true);
-      const response = await fetch("http://127.0.0.1:8000/api/medicines/", {
+      const response = await fetch("https://hospital-management-system-6jw8.onrender.com/api/medicines/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -142,7 +142,7 @@ function Inventory() {
     try {
       const token = localStorage.getItem("accessToken");
       setLoading(true);
-      const response = await fetch(`http://127.0.0.1:8000/api/medicines/${editingId}/`, {
+      const response = await fetch(`https://hospital-management-system-6jw8.onrender.com/api/medicines/${editingId}/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -182,7 +182,7 @@ function Inventory() {
     try {
       const token = localStorage.getItem("accessToken");
       setLoading(true);
-      const response = await fetch(`http://127.0.0.1:8000/api/medicines/${id}/`, {
+      const response = await fetch(`https://hospital-management-system-6jw8.onrender.com/api/medicines/${id}/`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

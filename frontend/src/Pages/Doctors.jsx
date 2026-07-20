@@ -35,7 +35,7 @@ function Doctors() {
     setLoading(true);
     try {
       const token = localStorage.getItem("accessToken");
-      let url = "http://127.0.0.1:8000/api/doctors/";
+      let url = "https://hospital-management-system-6jw8.onrender.com/api/doctors/";
       const queryParams = [];
       if (search) {
         queryParams.push(`search=${encodeURIComponent(search)}`);
@@ -74,7 +74,7 @@ function Doctors() {
       const token = localStorage.getItem("accessToken");
       setLoading(true);
       const response = await fetch(
-        "http://127.0.0.1:8000/api/doctors/",
+        "https://hospital-management-system-6jw8.onrender.com/api/doctors/",
         {
           method: "POST",
           headers: {
@@ -123,7 +123,7 @@ function Doctors() {
       const token = localStorage.getItem("accessToken");
       setLoading(true);
       const response = await fetch(
-        `http://127.0.0.1:8000/api/doctors/${editingId}/`,
+        `https://hospital-management-system-6jw8.onrender.com/api/doctors/${editingId}/`,
         {
           method: "PUT",
           headers: {
@@ -172,7 +172,7 @@ function Doctors() {
       const doc = doctors.find(d => d.id === id);
       if (!doc) return;
       const response = await fetch(
-        `http://127.0.0.1:8000/api/doctors/${id}/`,
+        `https://hospital-management-system-6jw8.onrender.com/api/doctors/${id}/`,
         {
           method: "PUT",
           headers: {
@@ -225,7 +225,7 @@ function Doctors() {
     try {
       const token = localStorage.getItem("accessToken");
       setLoading(true);
-      const response = await fetch(`http://127.0.0.1:8000/api/doctors/${id}/`, {
+      const response = await fetch(`https://hospital-management-system-6jw8.onrender.com/api/doctors/${id}/`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
