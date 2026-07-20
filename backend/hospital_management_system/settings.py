@@ -33,10 +33,10 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 ALLOWED_HOSTS = [
-    "hospital-management-system-6jw8.onrender.com",
-    "localhost",
-    "127.0.0.1",
+    "*",
 ]
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
