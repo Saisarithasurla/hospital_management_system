@@ -108,4 +108,117 @@ textarea {
   scrollbar-width: none;
 }
 
+/* ===== Mobile Version Alignment & Responsiveness Fixes ===== */
+@media (max-w: 768px) {
+  /* Reduce excessive padding on mobile to maximize screen real estate */
+  .p-8 {
+    padding: 1.25rem !important;
+  }
+  
+  .p-6 {
+    padding: 1rem !important;
+  }
+  
+  .p-5 {
+    padding: 0.875rem !important;
+  }
+  
+  .gap-6 {
+    gap: 1rem !important;
+  }
+
+  .mb-8 {
+    margin-bottom: 1rem !important;
+  }
+
+  /* Prevent table cards from causing horizontal page scrolling */
+  .bg-theme-card:has(table) {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Make table look readable with minimum width constraints, avoiding column squeezing */
+  table {
+    min-width: 650px !important;
+    width: 100% !important;
+  }
+
+  /* Make header elements and action bars fit perfectly */
+  .flex-wrap {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+  }
+  
+  .flex-wrap input,
+  .flex-wrap select,
+  .flex-wrap button {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Search & Filter Header card items layout */
+  .justify-between.items-start {
+    align-items: stretch !important;
+    padding: 1rem !important;
+  }
+
+  /* Adjust page titles on mobile */
+  h1.text-3xl {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+  
+  h2.text-3xl {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+
+  /* Ensure calendar doesn't overflow */
+  .fc {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+  }
+
+  .fc-view-harness {
+    min-width: 600px !important;
+  }
+}
+
+@media (max-w: 640px) {
+  /* Forms input fields margins */
+  .space-y-5 > * {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .p-4 {
+    padding: 0.75rem !important;
+  }
+
+  /* Button groups in forms should stack neatly */
+  .flex.gap-4 {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  
+  .flex.gap-4 button {
+    width: 100% !important;
+  }
+}
+
+/* Ensure flex main container doesn't overflow horizontally */
+.flex-1.animate-fade-in {
+  min-width: 0 !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+
+
 

@@ -7,6 +7,7 @@ export function ThemeProvider({ children }) {
     const saved = localStorage.getItem("theme");
     return saved || "light";
   });
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -23,7 +24,7 @@ export function ThemeProvider({ children }) {
   const toggleDarkMode = toggleTheme;
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, darkMode, toggleDarkMode }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, darkMode, toggleDarkMode, sidebarOpen, setSidebarOpen }}>
       {children}
     </ThemeContext.Provider>
   );
