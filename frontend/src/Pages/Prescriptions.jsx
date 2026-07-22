@@ -369,7 +369,7 @@ function Prescriptions() {
   };
 
   return (
-    <div className="flex min-h-screen bg-theme-primary">
+    <div className="flex min-h-screen bg-theme-primary page-prescriptions">
       {loading && <Spinner />}
       <Sidebar />
       <div className="flex-1 animate-fade-in">

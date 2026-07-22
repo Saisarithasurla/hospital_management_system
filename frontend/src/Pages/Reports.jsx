@@ -250,7 +250,7 @@ function Reports() {
   };
 
   return (
-    <div className="flex min-h-screen bg-theme-primary">
+    <div className="flex min-h-screen bg-theme-primary page-reports">
       {loading && <Spinner />}
       <Sidebar />
       <div className="flex-1 animate-fade-in">

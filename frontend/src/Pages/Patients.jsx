@@ -242,7 +242,7 @@ function Patients() {
   const offset = currentPage * itemsPerPage;
   const currentPatients = filteredPatients.slice(offset, offset + itemsPerPage);
   return (
-    <div className="flex min-h-screen bg-theme-primary">
+    <div className="flex min-h-screen bg-theme-primary page-patients">
       {loading && <Spinner />}
       <Sidebar />
       <div className="flex-1">

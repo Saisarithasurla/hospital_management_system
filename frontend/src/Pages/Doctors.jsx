@@ -280,7 +280,7 @@ function Doctors() {
     }
   };
   return (
-    <div className="flex min-h-screen bg-theme-primary">
+    <div className="flex min-h-screen bg-theme-primary page-doctors">
       <Sidebar />
       {loading && <Spinner />}
       <div className="flex-1">

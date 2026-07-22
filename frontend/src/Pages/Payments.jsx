@@ -321,7 +321,7 @@ function Payments() {
   };
 
   return (
-    <div className="flex min-h-screen bg-theme-primary">
+    <div className="flex min-h-screen bg-theme-primary page-payments">
       {loading && <Spinner />}
       <Sidebar />
       <div className="flex-1">

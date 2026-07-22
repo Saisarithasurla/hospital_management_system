@@ -208,7 +208,7 @@ function Appointments() {
   const offset = currentPage * itemsPerPage;
   const currentAppointments = filteredAppointments.slice(offset, offset + itemsPerPage);
   return (
-    <div className="flex min-h-screen bg-theme-primary">
+    <div className="flex min-h-screen bg-theme-primary page-appointments">
       <Sidebar />
       {loading && <Spinner />}
       <div className="flex-1">

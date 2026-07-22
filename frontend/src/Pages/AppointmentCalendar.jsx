@@ -386,7 +386,7 @@ function AppointmentCalendar() {
           </div>
 
           {/* Metrics cards */}
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="bg-theme-card border border-theme rounded-2xl p-6 shadow-theme-sm flex items-center justify-between">
               <div>
                 <p className="text-xs text-theme-muted font-semibold uppercase tracking-wider">Today's Appointments</p>

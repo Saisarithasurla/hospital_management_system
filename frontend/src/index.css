@@ -244,20 +244,85 @@ textarea {
 
   /* Prevent cards (especially table wrappers) from causing horizontal page scrolling */
   .bg-theme-card {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden !important;
     width: 100% !important;
     max-width: 100% !important;
   }
   
-  /* Make table look readable with minimum width constraints, avoiding column squeezing */
-  table {
-    min-width: 600px !important;
+  /* Navigation Tabs: scroll horizontally on mobile instead of clipping */
+  .flex.border-b.border-theme {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     width: 100% !important;
+  }
+  .flex.border-b.border-theme::-webkit-scrollbar {
+    display: none;
+  }
+  .flex.border-b.border-theme button {
+    flex-shrink: 0 !important;
+  }
+  
+  /* Make table look readable, avoiding column squeezing */
+  table {
+    min-width: 100% !important;
+    width: 100% !important;
+    table-layout: auto !important;
+  }
+  
+  th, td {
+    padding: 0.4rem 0.2rem !important;
+    font-size: 0.725rem !important;
+    word-break: break-word !important;
+  }
+
+  /* Specific column hiding rules for mobile to make them fit without horizontal scrolling */
+  table th:first-child, table td:first-child {
+    display: none !important; /* Hide ID / serial columns */
+  }
+
+  /* Doctors table: Hide Phone (4th) */
+  .page-doctors table th:nth-child(4), .page-doctors table td:nth-child(4) {
+    display: none !important;
+  }
+
+  /* Patients table: Hide Phone (5th) */
+  .page-patients table th:nth-child(5), .page-patients table td:nth-child(5) {
+    display: none !important;
+  }
+
+  /* Appointments table: Hide Time (5th) and Doctor (2nd) */
+  .page-appointments table th:nth-child(2), .page-appointments table td:nth-child(2),
+  .page-appointments table th:nth-child(5), .page-appointments table td:nth-child(5) {
+    display: none !important;
+  }
+
+  /* Inventory table: Hide Batch/Mfg (3rd) and Expiry (5th) */
+  .page-inventory table th:nth-child(3), .page-inventory table td:nth-child(3),
+  .page-inventory table th:nth-child(5), .page-inventory table td:nth-child(5) {
+    display: none !important;
+  }
+
+  /* Bills table: Hide Appointment (3rd) */
+  .page-bills table th:nth-child(3), .page-bills table td:nth-child(3) {
+    display: none !important;
+  }
+
+  /* Payments table: Hide Bill ID (2nd) */
+  .page-payments table th:nth-child(2), .page-payments table td:nth-child(2) {
+    display: none !important;
+  }
+
+  /* Rooms table: Hide Floor (3rd) */
+  .page-rooms table th:nth-child(3), .page-rooms table td:nth-child(3) {
+    display: none !important;
   }
 
   /* Make header elements and action bars stack neatly on mobile */
-  .flex-wrap, [class*="flex-wrap"] {
+  .flex-wrap, [class*="flex-wrap"], .flex-nowrap, [class*="flex-nowrap"] {
+    flex-wrap: wrap !important;
     flex-direction: column !important;
     align-items: stretch !important;
     width: 100% !important;
@@ -268,9 +333,15 @@ textarea {
   .flex-wrap input,
   .flex-wrap select,
   .flex-wrap button,
+  .flex-nowrap input,
+  .flex-nowrap select,
+  .flex-nowrap button,
   [class*="flex-wrap"] input,
   [class*="flex-wrap"] select,
   [class*="flex-wrap"] button,
+  [class*="flex-nowrap"] input,
+  [class*="flex-nowrap"] select,
+  [class*="flex-nowrap"] button,
   input[class*="w-"],
   select[class*="w-"],
   button[class*="w-"] {
@@ -329,23 +400,22 @@ textarea {
   /* FullCalendar customization for mobile screens */
   .fc-header-toolbar {
     display: flex !important;
-    flex-direction: column !important;
-    gap: 0.5rem !important;
-    align-items: stretch !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
   }
 
-  .fc-toolbar-title {
-    font-size: 1.125rem !important;
-    text-align: center !important;
-  }
-
-  .fc-button-group {
+  .fc-toolbar-chunk {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    flex-wrap: wrap !important;
     justify-content: center !important;
   }
 
-  .fc-today-button {
-    margin: 0.25rem auto !important;
-    width: fit-content !important;
+  .fc-button {
+    padding: 6px 10px !important;
+    font-size: 0.725rem !important;
   }
   
   /* Stack buttons inside profile / forms */
