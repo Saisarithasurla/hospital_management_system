@@ -509,7 +509,7 @@ function Rooms() {
                 <button
                   key={tab}
                   onClick={() => { setActiveTab(tab); setCurrentPage(0); setSearchQuery(""); }}
-                  className={`px-6 py-3 font-semibold text-sm capitalize border-b-2 transition ${
+                  className={`px-3 sm:px-6 py-3 font-semibold text-xs sm:text-sm capitalize border-b-2 transition ${
                     activeTab === tab 
                       ? "border-blue-600 text-blue-600"
                       : "border-transparent text-theme-muted hover:text-theme-primary"

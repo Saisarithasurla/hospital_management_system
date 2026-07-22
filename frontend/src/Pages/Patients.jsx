@@ -254,16 +254,16 @@ function Patients() {
                 <h1 className="text-3xl font-bold text-theme-primary">Patients</h1>
                 <p className="text-sm text-theme-muted">Manage patients, export records, and search quickly.</p>
               </div>
-              <div className="flex items-center gap-3 flex-nowrap">
-                <input type="text" placeholder="Search Patient..." value={search} onChange={(e) => { setSearch(e.target.value); setCurrentPage(0); }} className="w-72 border border-theme-strong bg-theme-input rounded-3xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-300 text-theme-primary placeholder:text-theme-muted" />
-                <select value={itemsPerPage} onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(0); }} className="border border-theme-strong bg-theme-input rounded-3xl px-3 py-2 text-theme-primary">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+                <input type="text" placeholder="Search Patient..." value={search} onChange={(e) => { setSearch(e.target.value); setCurrentPage(0); }} className="w-full sm:w-72 border border-theme-strong bg-theme-input rounded-3xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-300 text-theme-primary placeholder:text-theme-muted" />
+                <select value={itemsPerPage} onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(0); }} className="w-full sm:w-auto border border-theme-strong bg-theme-input rounded-3xl px-3 py-2 text-theme-primary">
                   <option value={5}>5 / page</option>
                   <option value={10}>10 / page</option>
                 </select>
-                <button type="button" onClick={exportPdf} className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-3xl transition hover:-translate-y-0.5">Export PDF</button>
-                <button type="button" onClick={exportExcel} className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-3xl transition hover:-translate-y-0.5">Export Excel</button>
+                <button type="button" onClick={exportPdf} className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-3xl transition hover:-translate-y-0.5">Export PDF</button>
+                <button type="button" onClick={exportExcel} className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-3xl transition hover:-translate-y-0.5">Export Excel</button>
                 {role !== "Doctor" && !showForm && (
-                  <button onClick={() => { setShowForm(true); setIsEditing(false); setEditingId(null); setName(""); setAge(""); setGender(""); setPhone(""); setPhoneError(""); setAgeError(""); }} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg"> + Add Patient </button>
+                  <button onClick={() => { setShowForm(true); setIsEditing(false); setEditingId(null); setName(""); setAge(""); setGender(""); setPhone(""); setPhoneError(""); setAgeError(""); }} className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg"> + Add Patient </button>
                 )}
               </div>
             </div>
@@ -301,23 +301,23 @@ function Patients() {
               <table className="w-full">
                 <thead className="bg-theme-tertiary">
                   <tr>
-                    <th className="p-4 text-left text-theme-primary">ID</th>
+                    <th className="p-4 text-left text-theme-primary mobile-hide">ID</th>
                     <th className="p-4 text-left text-theme-primary">Patient Name</th>
                     <th className="p-4 text-left text-theme-primary">Age</th>
                     <th className="p-4 text-left text-theme-primary">Gender</th>
-                    <th className="p-4 text-left text-theme-primary">Phone</th>
+                    <th className="p-4 text-left text-theme-primary mobile-hide">Phone</th>
                     <th className="p-4 text-center text-theme-primary">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {filteredPatients.length > 0 ? (
                     currentPatients.map((patient) => (
-                      <tr key={patient.id} className="border-t border-theme hover:bg-theme-hover text-theme-primary">
-                        <td className="p-4">{patient.id}</td>
+                       <tr key={patient.id} className="border-t border-theme hover:bg-theme-hover text-theme-primary">
+                        <td className="p-4 mobile-hide">{patient.id}</td>
                         <td className="p-4">{patient.name}</td>
                         <td className="p-4">{patient.age}</td>
                         <td className="p-4">{patient.gender}</td>
-                        <td className="p-4">{patient.phone}</td>
+                        <td className="p-4 mobile-hide">{patient.phone}</td>
                         <td className="p-4 text-center">
                           <Link to={`/patients/${patient.id}/history`} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-xs font-semibold mr-2 inline-block transition">History</Link>
                           {role !== "Doctor" && (

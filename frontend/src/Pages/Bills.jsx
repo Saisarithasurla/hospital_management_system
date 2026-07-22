@@ -448,9 +448,9 @@ function Bills() {
                 <h1 className="text-3xl font-bold text-theme-primary">Bills</h1>
                 <p className="text-sm text-theme-muted">Filter by date range, search by patient, amount, status, or date.</p>
               </div>
-              <div className="flex items-center gap-3 flex-nowrap w-full sm:w-auto">
-                <button type="button" onClick={exportPdf} className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-3xl transition hover:-translate-y-0.5">Export PDF</button>
-                <button type="button" onClick={exportExcel} className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-3xl transition hover:-translate-y-0.5">Export Excel</button>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+                <button type="button" onClick={exportPdf} className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-3xl transition hover:-translate-y-0.5">Export PDF</button>
+                <button type="button" onClick={exportExcel} className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-3xl transition hover:-translate-y-0.5">Export Excel</button>
                 {!showForm && (
                   <button
                     onClick={() => {
@@ -464,7 +464,7 @@ function Bills() {
                       setAmountError("");
                     }}
                     type="button"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-3xl transition hover:-translate-y-0.5"
+                    className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-3xl transition hover:-translate-y-0.5"
                   >
                     + Add Bill
                   </button>
@@ -607,9 +607,9 @@ function Bills() {
               <table className="w-full">
                 <thead className="bg-theme-tertiary">
                   <tr>
-                    <th className="p-4 text-left text-theme-primary">ID</th>
+                    <th className="p-4 text-left text-theme-primary mobile-hide">ID</th>
                     <th className="p-4 text-left text-theme-primary">Patient</th>
-                    <th className="p-4 text-left text-theme-primary">Appointment</th>
+                    <th className="p-4 text-left text-theme-primary mobile-hide">Appointment</th>
                     <th className="p-4 text-left text-theme-primary">Amount</th>
                     <th className="p-4 text-left text-theme-primary">Status</th>
                     <th className="p-4 text-center text-theme-primary">Actions</th>
@@ -619,9 +619,9 @@ function Bills() {
                   {filteredBills.length > 0 ? (
                     currentBills.map((bill) => (
                       <tr key={bill.id} className="border-t border-theme hover:bg-theme-hover text-theme-primary">
-                        <td className="p-4">{bill.id}</td>
+                        <td className="p-4 mobile-hide">{bill.id}</td>
                         <td className="p-4">{bill.patient_name || patients.find(p => p.id == bill.patient)?.name || bill.patient}</td>
-                        <td className="p-4">
+                        <td className="p-4 mobile-hide">
                           {(() => {
                             const appt = appointments.find(a => a.id == bill.appointment);
                             if (!appt) return bill.appointment;

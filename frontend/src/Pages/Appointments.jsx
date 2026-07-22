@@ -273,11 +273,11 @@ function Appointments() {
               <table className="w-full">
                 <thead className="bg-theme-tertiary">
                   <tr>
-                    <th className="p-4 text-left text-theme-primary">ID</th>
-                    <th className="p-4 text-left text-theme-primary">Doctor</th>
+                    <th className="p-4 text-left text-theme-primary mobile-hide">ID</th>
+                    <th className="p-4 text-left text-theme-primary mobile-hide">Doctor</th>
                     <th className="p-4 text-left text-theme-primary">Patient</th>
                     <th className="p-4 text-left text-theme-primary">Date</th>
-                    <th className="p-4 text-left text-theme-primary">Time</th>
+                    <th className="p-4 text-left text-theme-primary mobile-hide">Time</th>
                     <th className="p-4 text-left text-theme-primary">Status</th>
                     <th className="p-4 text-center text-theme-primary">Actions</th>
                   </tr>
@@ -286,11 +286,11 @@ function Appointments() {
                   {filteredAppointments.length > 0 ? (
                     currentAppointments.map((appointment) => (
                       <tr key={appointment.id} className="border-t border-theme hover:bg-theme-hover text-theme-primary">
-                        <td className="p-4">{appointment.id}</td>
-                        <td className="p-4">{doctors.find(d => d.id === appointment.doctor)?.name || appointment.doctor_name || appointment.doctor}</td>
+                        <td className="p-4 mobile-hide">{appointment.id}</td>
+                        <td className="p-4 mobile-hide">{doctors.find(d => d.id === appointment.doctor)?.name || appointment.doctor_name || appointment.doctor}</td>
                         <td className="p-4">{patients.find(p => p.id === appointment.patient)?.name || appointment.patient_name || appointment.patient}</td>
                         <td className="p-4">{appointment.appointment_date}</td>
-                        <td className="p-4">{appointment.appointment_time}</td>
+                        <td className="p-4 mobile-hide">{appointment.appointment_time}</td>
                         <td className="p-4">{appointment.status}</td>
                         <td className="p-4 text-center">
                           <button onClick={() => editAppointment(appointment)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded mr-2">{role === 'Doctor' ? 'Update Status' : 'Edit'}</button>

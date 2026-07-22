@@ -384,7 +384,7 @@ function PatientHistory() {
                 <Search className="w-4 h-4 text-theme-muted absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
-                  placeholder="Search diagnosis, prescription or visit date..."
+                  placeholder="Search history, diagnosis, dates..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   className="w-full border border-theme-strong bg-theme-input rounded-3xl pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-300 text-theme-primary placeholder:text-theme-muted text-sm"

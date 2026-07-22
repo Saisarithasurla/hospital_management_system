@@ -471,7 +471,7 @@ function Payments() {
                     <Search className="absolute left-4 top-3.5 text-theme-muted" size={18} />
                     <input
                       type="text"
-                      placeholder="Search by Patient Name, Payment ID, Transaction ID..."
+                      placeholder="Search by Patient, Payment, or Txn ID..."
                       value={searchQuery}
                       onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(0); }}
                       className="w-full border border-theme-strong bg-theme-input rounded-3xl pl-12 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-300 text-theme-primary placeholder:text-theme-muted"

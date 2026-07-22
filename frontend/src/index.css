@@ -251,9 +251,18 @@ textarea {
 
   /* Prevent cards (especially table wrappers) from causing horizontal page scrolling */
   .bg-theme-card {
-    overflow-x: hidden !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
     width: 100% !important;
     max-width: 100% !important;
+  }
+
+  .page-reports .bg-theme-card,
+  .page-prescriptions .bg-theme-card,
+  .page-patients .bg-theme-card,
+  .page-appointments .bg-theme-card,
+  .page-bills .bg-theme-card {
+    overflow-x: hidden !important;
   }
   
   /* Navigation Tabs: scroll horizontally on mobile instead of clipping */
@@ -273,31 +282,32 @@ textarea {
   }
   
   /* Make table look readable, avoiding column squeezing */
-  table {
+  .bg-theme-card table {
+    min-width: 650px !important;
+    width: 100% !important;
+    table-layout: auto !important;
+  }
+
+  /* Reports, Prescriptions, Patients, Appointments & Bills tables (explicitly non-scrollable) */
+  .page-reports .bg-theme-card table,
+  .page-prescriptions .bg-theme-card table,
+  .page-patients .bg-theme-card table,
+  .page-appointments .bg-theme-card table,
+  .page-bills .bg-theme-card table {
     min-width: 100% !important;
     width: 100% !important;
     table-layout: auto !important;
   }
   
   th, td {
-    padding: 0.4rem 0.2rem !important;
-    font-size: 0.725rem !important;
+    padding: 0.5rem 0.3rem !important;
+    font-size: 0.75rem !important;
     word-break: break-word !important;
   }
 
   /* Specific column hiding rules for mobile to make them fit without horizontal scrolling */
-  table th:first-child, table td:first-child {
-    display: none !important; /* Hide ID / serial columns */
-  }
-
-  /* Doctors table: Hide Phone (4th) */
-  .page-doctors table th:nth-child(4), .page-doctors table td:nth-child(4) {
-    display: none !important;
-  }
-
-  /* Patients table: Hide Phone (5th) */
-  .page-patients table th:nth-child(5), .page-patients table td:nth-child(5) {
-    display: none !important;
+  table th:first-child, table td:first-child, .mobile-hide {
+    display: none !important; /* Hide ID / serial columns / manually hidden columns */
   }
 
   /* Appointments table: Hide Time (5th) and Doctor (2nd) */
@@ -384,6 +394,28 @@ textarea {
   .fc-view-harness {
     min-width: 600px !important;
   }
+
+  /* FullCalendar customization for mobile/tablet screens */
+  .fc-header-toolbar {
+    display: flex !important;
+    flex-direction: column !important; /* Stack control groups vertically */
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .fc-toolbar-chunk {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .fc-button {
+    padding: 6px 10px !important;
+    font-size: 0.725rem !important;
+  }
 }
 
 @media (max-w: 640px) {
@@ -402,27 +434,6 @@ textarea {
   /* Make sure modal content matches the theme color scheme */
   .bg-theme-overlay {
     backdrop-filter: blur(4px) !important;
-  }
-
-  /* FullCalendar customization for mobile screens */
-  .fc-header-toolbar {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 8px !important;
-  }
-
-  .fc-toolbar-chunk {
-    display: flex !important;
-    align-items: center !important;
-    gap: 4px !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-  }
-
-  .fc-button {
-    padding: 6px 10px !important;
-    font-size: 0.725rem !important;
   }
   
   /* Stack buttons inside profile / forms */

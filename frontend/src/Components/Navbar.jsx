@@ -189,7 +189,7 @@ function Navbar() {
         <h2 className="text-base sm:text-2xl font-bold text-theme-primary truncate max-w-[120px] sm:max-w-none">{getPageTitle()}</h2>
       </div>
       <div className="flex items-center gap-2 sm:gap-4">
-        <div className="relative" ref={dropdownRef}>
+        <div className="static sm:relative" ref={dropdownRef}>
           <button onClick={() => setIsOpen(!isOpen)} className="p-2 rounded-full bg-theme-tertiary text-theme-primary hover:bg-theme-hover transition-colors relative flex items-center justify-center cursor-pointer" title="Notifications">
             <Bell size={18} className="sm:w-5 sm:h-5" />
             {unreadCount > 0 && (
@@ -199,7 +199,7 @@ function Navbar() {
             )}
           </button>
           {isOpen && (
-            <div className="absolute right-0 mt-3 w-72 sm:w-96 bg-theme-card border border-theme rounded-xl shadow-theme-2xl z-50 overflow-hidden text-theme-primary">
+            <div className="absolute right-4 sm:right-0 left-4 sm:left-auto mt-3 w-auto sm:w-96 bg-theme-card border border-theme rounded-xl shadow-theme-2xl z-50 overflow-hidden text-theme-primary">
               <div className="flex items-center justify-between px-4 py-3 border-b border-theme bg-theme-secondary/40">
                 <h3 className="font-semibold text-sm sm:text-base">Notifications</h3>
                 {unreadCount > 0 && (
