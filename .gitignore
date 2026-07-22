@@ -1,0 +1,8 @@
+.env
+backend/hospital_management_system/.env
+node_modules/
+dist/
+venv/
+*.pyc
+db.sqlite3
+.gemini/

@@ -6,10 +6,10 @@ function Sidebar() {
   const { sidebarOpen, setSidebarOpen } = useTheme();
 
   const linkClass = ({ isActive }) =>
-    `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ease-out font-medium ${
+    `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ease-out font-semibold ${
       isActive
         ? "bg-slate-900 text-white shadow-lg"
-        : "text-slate-700 dark:text-slate-200 hover:bg-theme-hover hover:text-theme-primary"
+        : "text-theme-secondary hover:bg-theme-hover hover:text-theme-primary"
     }`;
   const role = localStorage.getItem("userRole");
 
