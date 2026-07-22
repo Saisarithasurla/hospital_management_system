@@ -219,6 +219,66 @@ textarea {
   overflow-x: hidden !important;
 }
 
+/* Modals & Forms Responsiveness Overrides */
+@media (max-w: 640px) {
+  /* Prevent modals from expanding past the screen height and enable scrolling */
+  .fixed.inset-0 > div,
+  .fixed.inset-0 > .bg-theme-card,
+  .fixed.inset-0 > div > div {
+    max-height: 85vh !important;
+    overflow-y: auto !important;
+    width: 92% !important;
+    margin: auto !important;
+    padding: 1.25rem !important;
+    border-radius: 1rem !important;
+  }
+  
+  /* Make sure modal content matches the theme color scheme */
+  .bg-theme-overlay {
+    backdrop-filter: blur(4px) !important;
+  }
+
+  /* FullCalendar customization for mobile screens */
+  .fc-header-toolbar {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    align-items: stretch !important;
+  }
+
+  .fc-toolbar-title {
+    font-size: 1.125rem !important;
+    text-align: center !important;
+  }
+
+  .fc-button-group {
+    justify-content: center !important;
+  }
+
+  .fc-today-button {
+    margin: 0.25rem auto !important;
+    width: fit-content !important;
+  }
+  
+  /* Stack buttons inside profile / forms */
+  .flex.justify-end.gap-3 {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.5rem !important;
+  }
+  
+  .flex.justify-end.gap-3 button {
+    width: 100% !important;
+  }
+
+  /* Optimize margins for form fields */
+  input, select, textarea {
+    padding: 0.75rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+
 
 
 
