@@ -258,10 +258,7 @@ textarea {
   }
 
   .page-reports .bg-theme-card,
-  .page-prescriptions .bg-theme-card,
-  .page-patients .bg-theme-card,
-  .page-appointments .bg-theme-card,
-  .page-bills .bg-theme-card {
+  .page-prescriptions .bg-theme-card {
     overflow-x: hidden !important;
   }
   
@@ -288,12 +285,9 @@ textarea {
     table-layout: auto !important;
   }
 
-  /* Reports, Prescriptions, Patients, Appointments & Bills tables (explicitly non-scrollable) */
+  /* Reports & Prescriptions tables (explicitly non-scrollable) */
   .page-reports .bg-theme-card table,
-  .page-prescriptions .bg-theme-card table,
-  .page-patients .bg-theme-card table,
-  .page-appointments .bg-theme-card table,
-  .page-bills .bg-theme-card table {
+  .page-prescriptions .bg-theme-card table {
     min-width: 100% !important;
     width: 100% !important;
     table-layout: auto !important;
@@ -310,20 +304,21 @@ textarea {
     display: none !important; /* Hide ID / serial columns / manually hidden columns */
   }
 
-  /* Appointments table: Hide Time (5th) and Doctor (2nd) */
-  .page-appointments table th:nth-child(2), .page-appointments table td:nth-child(2),
-  .page-appointments table th:nth-child(5), .page-appointments table td:nth-child(5) {
-    display: none !important;
+  /* Override column hiding for doctors, patients, appointments, and bills tables on mobile to show them completely */
+  .page-doctors table th:first-child, .page-doctors table td:first-child,
+  .page-patients table th:first-child, .page-patients table td:first-child,
+  .page-appointments table th:first-child, .page-appointments table td:first-child,
+  .page-bills table th:first-child, .page-bills table td:first-child,
+  .page-doctors .mobile-hide,
+  .page-patients .mobile-hide,
+  .page-appointments .mobile-hide,
+  .page-bills .mobile-hide {
+    display: table-cell !important;
   }
 
   /* Inventory table: Hide Batch/Mfg (3rd) and Expiry (5th) */
   .page-inventory table th:nth-child(3), .page-inventory table td:nth-child(3),
   .page-inventory table th:nth-child(5), .page-inventory table td:nth-child(5) {
-    display: none !important;
-  }
-
-  /* Bills table: Hide Appointment (3rd) */
-  .page-bills table th:nth-child(3), .page-bills table td:nth-child(3) {
     display: none !important;
   }
 
