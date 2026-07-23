@@ -411,6 +411,12 @@ textarea {
     padding: 6px 10px !important;
     font-size: 0.725rem !important;
   }
+
+  /* Add gap between action buttons/links in table cells on mobile */
+  td button, td a {
+    margin: 0.25rem 0.125rem !important;
+    display: inline-block !important;
+  }
 }
 
 @media (max-w: 640px) {
