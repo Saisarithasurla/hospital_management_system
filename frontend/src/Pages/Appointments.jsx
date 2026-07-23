@@ -270,43 +270,45 @@ function Appointments() {
           </div>
           ) : (
             <div className="bg-theme-card rounded-3xl border border-theme shadow-theme-xl overflow-hidden">
-              <table className="w-full">
-                <thead className="bg-theme-tertiary">
-                  <tr>
-                    <th className="p-4 text-left text-theme-primary mobile-hide">ID</th>
-                    <th className="p-4 text-left text-theme-primary mobile-hide">Doctor</th>
-                    <th className="p-4 text-left text-theme-primary">Patient</th>
-                    <th className="p-4 text-left text-theme-primary">Date</th>
-                    <th className="p-4 text-left text-theme-primary mobile-hide">Time</th>
-                    <th className="p-4 text-left text-theme-primary">Status</th>
-                    <th className="p-4 text-center text-theme-primary">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredAppointments.length > 0 ? (
-                    currentAppointments.map((appointment) => (
-                      <tr key={appointment.id} className="border-t border-theme hover:bg-theme-hover text-theme-primary">
-                        <td className="p-4 mobile-hide">{appointment.id}</td>
-                        <td className="p-4 mobile-hide">{doctors.find(d => d.id === appointment.doctor)?.name || appointment.doctor_name || appointment.doctor}</td>
-                        <td className="p-4">{patients.find(p => p.id === appointment.patient)?.name || appointment.patient_name || appointment.patient}</td>
-                        <td className="p-4">{appointment.appointment_date}</td>
-                        <td className="p-4 mobile-hide">{appointment.appointment_time}</td>
-                        <td className="p-4">{appointment.status}</td>
-                        <td className="p-4 text-center">
-                          <button onClick={() => editAppointment(appointment)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded mr-2">{role === 'Doctor' ? 'Update Status' : 'Edit'}</button>
-                          {role !== "Doctor" && (
-                            <button onClick={() => requestDeleteAppointment(appointment.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded">Delete</button>
-                          )}
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-theme-tertiary">
                     <tr>
-                      <td colSpan="7" className="text-center p-8 text-theme-muted">No Appointments Found</td>
+                      <th className="p-4 text-left text-theme-primary mobile-hide">ID</th>
+                      <th className="p-4 text-left text-theme-primary mobile-hide">Doctor</th>
+                      <th className="p-4 text-left text-theme-primary">Patient</th>
+                      <th className="p-4 text-left text-theme-primary">Date</th>
+                      <th className="p-4 text-left text-theme-primary mobile-hide">Time</th>
+                      <th className="p-4 text-left text-theme-primary">Status</th>
+                      <th className="p-4 text-center text-theme-primary">Actions</th>
                     </tr>
-                  )}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {filteredAppointments.length > 0 ? (
+                      currentAppointments.map((appointment) => (
+                        <tr key={appointment.id} className="border-t border-theme hover:bg-theme-hover text-theme-primary">
+                          <td className="p-4 mobile-hide">{appointment.id}</td>
+                          <td className="p-4 mobile-hide">{doctors.find(d => d.id === appointment.doctor)?.name || appointment.doctor_name || appointment.doctor}</td>
+                          <td className="p-4">{patients.find(p => p.id === appointment.patient)?.name || appointment.patient_name || appointment.patient}</td>
+                          <td className="p-4">{appointment.appointment_date}</td>
+                          <td className="p-4 mobile-hide">{appointment.appointment_time}</td>
+                          <td className="p-4">{appointment.status}</td>
+                          <td className="p-4 text-center">
+                            <button onClick={() => editAppointment(appointment)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded mr-2">{role === 'Doctor' ? 'Update Status' : 'Edit'}</button>
+                            {role !== "Doctor" && (
+                              <button onClick={() => requestDeleteAppointment(appointment.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded">Delete</button>
+                            )}
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="7" className="text-center p-8 text-theme-muted">No Appointments Found</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
               <Pagination pageCount={pageCount} onPageChange={({ selected }) => setCurrentPage(selected)} forcePage={currentPage} />
             </div>)}
           <ConfirmDialog isOpen={confirmDeleteOpen} title="Delete Appointment" message="Are you sure you want to delete this appointment? This action cannot be undone."

@@ -604,50 +604,52 @@ function Bills() {
             </div>
           ) : (
             <div className="bg-theme-card rounded-3xl border border-theme shadow-theme-xl overflow-hidden">
-              <table className="w-full">
-                <thead className="bg-theme-tertiary">
-                  <tr>
-                    <th className="p-4 text-left text-theme-primary mobile-hide">ID</th>
-                    <th className="p-4 text-left text-theme-primary">Patient</th>
-                    <th className="p-4 text-left text-theme-primary mobile-hide">Appointment</th>
-                    <th className="p-4 text-left text-theme-primary">Amount</th>
-                    <th className="p-4 text-left text-theme-primary">Status</th>
-                    <th className="p-4 text-center text-theme-primary">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredBills.length > 0 ? (
-                    currentBills.map((bill) => (
-                      <tr key={bill.id} className="border-t border-theme hover:bg-theme-hover text-theme-primary">
-                        <td className="p-4 mobile-hide">{bill.id}</td>
-                        <td className="p-4">{bill.patient_name || patients.find(p => p.id == bill.patient)?.name || bill.patient}</td>
-                        <td className="p-4 mobile-hide">
-                          {(() => {
-                            const appt = appointments.find(a => a.id == bill.appointment);
-                            if (!appt) return bill.appointment;
-                            const apptPatient = patients.find(p => p.id == appt.patient)?.name || appt.patient_name || appt.patient;
-                            const apptDoctor = doctors.find(d => d.id == appt.doctor)?.name || appt.doctor_name || appt.doctor;
-                            return `${apptPatient}${apptDoctor ? ' - ' + apptDoctor : ''}`;
-                          })()}
-                        </td>
-                        <td className="p-4">₹{bill.amount}</td>
-                        <td className="p-4">{bill.payment_status}</td>
-                        <td className="p-4 text-center">
-                          {(bill.payment_status === "Pending" || bill.payment_status === "Failed") && (
-                            <button onClick={() => initiatePayment(bill)} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-xs font-semibold mr-2 transition">Pay</button>
-                          )}
-                          <button onClick={() => editBill(bill)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs mr-2 transition">Edit</button>
-                          <button onClick={() => requestDeleteBill(bill.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded text-xs transition">Delete</button>
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-theme-tertiary">
                     <tr>
-                      <td colSpan="6" className="text-center p-8 text-theme-muted">No Bills Found</td>
+                      <th className="p-4 text-left text-theme-primary mobile-hide">ID</th>
+                      <th className="p-4 text-left text-theme-primary">Patient</th>
+                      <th className="p-4 text-left text-theme-primary mobile-hide">Appointment</th>
+                      <th className="p-4 text-left text-theme-primary">Amount</th>
+                      <th className="p-4 text-left text-theme-primary">Status</th>
+                      <th className="p-4 text-center text-theme-primary">Actions</th>
                     </tr>
-                  )}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {filteredBills.length > 0 ? (
+                      currentBills.map((bill) => (
+                        <tr key={bill.id} className="border-t border-theme hover:bg-theme-hover text-theme-primary">
+                          <td className="p-4 mobile-hide">{bill.id}</td>
+                          <td className="p-4">{bill.patient_name || patients.find(p => p.id == bill.patient)?.name || bill.patient}</td>
+                          <td className="p-4 mobile-hide">
+                            {(() => {
+                              const appt = appointments.find(a => a.id == bill.appointment);
+                              if (!appt) return bill.appointment;
+                              const apptPatient = patients.find(p => p.id == appt.patient)?.name || appt.patient_name || appt.patient;
+                              const apptDoctor = doctors.find(d => d.id == appt.doctor)?.name || appt.doctor_name || appt.doctor;
+                              return `${apptPatient}${apptDoctor ? ' - ' + apptDoctor : ''}`;
+                            })()}
+                          </td>
+                          <td className="p-4">₹{bill.amount}</td>
+                          <td className="p-4">{bill.payment_status}</td>
+                          <td className="p-4 text-center">
+                            {(bill.payment_status === "Pending" || bill.payment_status === "Failed") && (
+                              <button onClick={() => initiatePayment(bill)} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-xs font-semibold mr-2 transition">Pay</button>
+                            )}
+                            <button onClick={() => editBill(bill)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs mr-2 transition">Edit</button>
+                            <button onClick={() => requestDeleteBill(bill.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded text-xs transition">Delete</button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="6" className="text-center p-8 text-theme-muted">No Bills Found</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
               <Pagination pageCount={pageCount} onPageChange={({ selected }) => setCurrentPage(selected)} forcePage={currentPage} />
             </div>
           )}

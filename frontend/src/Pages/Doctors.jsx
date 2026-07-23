@@ -343,51 +343,53 @@ function Doctors() {
             </div>
           ) : (
             <div className="bg-theme-card rounded-3xl border border-theme shadow-theme-xl overflow-hidden">
-              <table className="w-full">
-                <thead className="bg-theme-tertiary">
-                  <tr>
-                    <th className="p-4 text-left text-theme-primary">ID</th>
-                    <th className="p-4 text-left text-theme-primary">Doctor Name</th>
-                    <th className="p-4 text-left text-theme-primary">Specialization</th>
-                    <th className="p-4 text-left text-theme-primary">Phone</th>
-                    <th className="p-4 text-left text-theme-primary">Availability Status</th>
-                    {isAdmin && (
-                      <th className="p-4 text-center text-theme-primary">Actions</th>
-                    )}
-                  </tr>
-                </thead>
-                <tbody>
-                  {doctors.length > 0 ? (
-                    currentDoctors.map((doctor) => (
-                      <tr key={doctor.id} className="border-t border-theme hover:bg-theme-hover text-theme-primary">
-                        <td className="p-4">{doctor.id}</td>
-                        <td className="p-4 font-bold">{doctor.name}</td>
-                        <td className="p-4">{doctor.specialization}</td>
-                        <td className="p-4">{doctor.phone}</td>
-                        <td className="p-4">
-                          {isAdmin ? (
-                            <select value={doctor.availability_status || "Available"} onChange={(e) => updateAvailabilityInline(doctor.id, e.target.value)} className="bg-transparent border border-theme-strong rounded-xl px-2 py-1 text-xs font-semibold focus:ring-0 cursor-pointer outline-none text-theme-primary bg-theme-input"> <option value="Available">🟢 Available</option>
-                              <option value="Busy">🟡 Busy</option>
-                              <option value="On Leave">🔴 On Leave</option>
-                            </select>
-                          ) : (
-                            getStatusBadge(doctor.availability_status)
-                          )}
-                        </td>
-                        {isAdmin && (<td className="p-4 text-center">
-                          <button onClick={() => editDoctor(doctor)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded mr-2">Edit</button>
-                          <button onClick={() => requestDeleteDoctor(doctor.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded">Delete</button>
-                        </td>
-                        )}
-                      </tr>
-                    ))
-                  ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-theme-tertiary">
                     <tr>
-                      <td colSpan={isAdmin ? 6 : 5} className="text-center p-8 text-theme-muted">No Doctors Found</td>
+                      <th className="p-4 text-left text-theme-primary">ID</th>
+                      <th className="p-4 text-left text-theme-primary">Doctor Name</th>
+                      <th className="p-4 text-left text-theme-primary">Specialization</th>
+                      <th className="p-4 text-left text-theme-primary">Phone</th>
+                      <th className="p-4 text-left text-theme-primary">Availability Status</th>
+                      {isAdmin && (
+                        <th className="p-4 text-center text-theme-primary">Actions</th>
+                      )}
                     </tr>
-                  )}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {doctors.length > 0 ? (
+                      currentDoctors.map((doctor) => (
+                        <tr key={doctor.id} className="border-t border-theme hover:bg-theme-hover text-theme-primary">
+                          <td className="p-4">{doctor.id}</td>
+                          <td className="p-4 font-bold">{doctor.name}</td>
+                          <td className="p-4">{doctor.specialization}</td>
+                          <td className="p-4">{doctor.phone}</td>
+                          <td className="p-4">
+                            {isAdmin ? (
+                              <select value={doctor.availability_status || "Available"} onChange={(e) => updateAvailabilityInline(doctor.id, e.target.value)} className="bg-transparent border border-theme-strong rounded-xl px-2 py-1 text-xs font-semibold focus:ring-0 cursor-pointer outline-none text-theme-primary bg-theme-input"> <option value="Available">🟢 Available</option>
+                                <option value="Busy">🟡 Busy</option>
+                                <option value="On Leave">🔴 On Leave</option>
+                              </select>
+                            ) : (
+                              getStatusBadge(doctor.availability_status)
+                            )}
+                          </td>
+                          {isAdmin && (<td className="p-4 text-center">
+                            <button onClick={() => editDoctor(doctor)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded mr-2">Edit</button>
+                            <button onClick={() => requestDeleteDoctor(doctor.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded">Delete</button>
+                          </td>
+                          )}
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={isAdmin ? 6 : 5} className="text-center p-8 text-theme-muted">No Doctors Found</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
               <Pagination pageCount={pageCount} onPageChange={({ selected }) => setCurrentPage(selected)} forcePage={currentPage} />
             </div>
           )}

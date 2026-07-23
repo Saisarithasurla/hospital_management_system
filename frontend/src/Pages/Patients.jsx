@@ -298,44 +298,46 @@ function Patients() {
             </div>
           ) : (
             <div className="bg-theme-card rounded-3xl border border-theme shadow-theme-xl overflow-hidden">
-              <table className="w-full">
-                <thead className="bg-theme-tertiary">
-                  <tr>
-                    <th className="p-4 text-left text-theme-primary mobile-hide">ID</th>
-                    <th className="p-4 text-left text-theme-primary">Patient Name</th>
-                    <th className="p-4 text-left text-theme-primary">Age</th>
-                    <th className="p-4 text-left text-theme-primary">Gender</th>
-                    <th className="p-4 text-left text-theme-primary mobile-hide">Phone</th>
-                    <th className="p-4 text-center text-theme-primary">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredPatients.length > 0 ? (
-                    currentPatients.map((patient) => (
-                       <tr key={patient.id} className="border-t border-theme hover:bg-theme-hover text-theme-primary">
-                        <td className="p-4 mobile-hide">{patient.id}</td>
-                        <td className="p-4">{patient.name}</td>
-                        <td className="p-4">{patient.age}</td>
-                        <td className="p-4">{patient.gender}</td>
-                        <td className="p-4 mobile-hide">{patient.phone}</td>
-                        <td className="p-4 text-center">
-                          <Link to={`/patients/${patient.id}/history`} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-xs font-semibold mr-2 inline-block transition">History</Link>
-                          {role !== "Doctor" && (
-                            <>
-                              <button onClick={() => editPatient(patient)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs mr-2 transition">Edit</button>
-                              <button onClick={() => requestDeletePatient(patient.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded text-xs transition">Delete</button>
-                            </>
-                          )}
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-theme-tertiary">
                     <tr>
-                      <td colSpan={6} className="text-center p-8 text-theme-muted">No Patients Found</td>
+                      <th className="p-4 text-left text-theme-primary mobile-hide">ID</th>
+                      <th className="p-4 text-left text-theme-primary">Patient Name</th>
+                      <th className="p-4 text-left text-theme-primary">Age</th>
+                      <th className="p-4 text-left text-theme-primary">Gender</th>
+                      <th className="p-4 text-left text-theme-primary mobile-hide">Phone</th>
+                      <th className="p-4 text-center text-theme-primary">Actions</th>
                     </tr>
-                  )}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {filteredPatients.length > 0 ? (
+                      currentPatients.map((patient) => (
+                         <tr key={patient.id} className="border-t border-theme hover:bg-theme-hover text-theme-primary">
+                          <td className="p-4 mobile-hide">{patient.id}</td>
+                          <td className="p-4">{patient.name}</td>
+                          <td className="p-4">{patient.age}</td>
+                          <td className="p-4">{patient.gender}</td>
+                          <td className="p-4 mobile-hide">{patient.phone}</td>
+                          <td className="p-4 text-center">
+                            <Link to={`/patients/${patient.id}/history`} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-xs font-semibold mr-2 inline-block transition">History</Link>
+                            {role !== "Doctor" && (
+                              <>
+                                <button onClick={() => editPatient(patient)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs mr-2 transition">Edit</button>
+                                <button onClick={() => requestDeletePatient(patient.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded text-xs transition">Delete</button>
+                              </>
+                            )}
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={6} className="text-center p-8 text-theme-muted">No Patients Found</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
               <Pagination pageCount={pageCount} onPageChange={({ selected }) => setCurrentPage(selected)} forcePage={currentPage} />
             </div>
           )}
