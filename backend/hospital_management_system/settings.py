@@ -100,9 +100,11 @@ DATABASES = {
         "PASSWORD": config("DB_PASSWORD"),
         "HOST": config("DB_HOST"),
         "PORT": config("DB_PORT", default="3306"),
-        "OPTIONS": {
-            "ssl": {},
-        },
+       "OPTIONS": {
+    "ssl": {
+        "ca": config("SSL_CA", default=None),
+    },
+},
     }
 }
 
